@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Marcelino Champagnat</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #1c1c1c; /* Fondo oscuro */
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2C3E50;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .navbar-links a:hover {
+            background-color: #8A2BE2; /* Efecto hover lila */
+        }
+
+        /* Header con video de fondo */
+        .header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+        }
+
+        .header video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            padding: 0 10px;
+        }
+
+        /* Animación de entrada */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sección de contenido */
+        .content-section {
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            width: 90%;
+            border-radius: 10px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .content-section img {
+            width: 300px;
+            border-radius: 10px;
+            margin: 0 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .content-section:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+        }
+
+        .content-text {
+            max-width: 600px;
+            text-align: justify;
+        }
+
+        .content-text h2 {
+            color: #4A90E2; /* Títulos en azul */
+        }
+
+        /* Sección de tres bloques */
+        .content-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .content-item {
+            width: 30%;
+            text-align: center;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #fff;
+        }
+
+        .content-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Hover más intenso */
+        }
+
+        .content-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .content-item h3 {
+            color: #4A90E2; /* Títulos en azul */
+            font-size: 1.2em;
+        }
+
+        .content-item p {
+            color: #ddd;
+        }
+
+        /* Texto especial */
+        .special-text {
+            text-align: center;
+            font-size: 1.5em;
+            color: #fff;
+            margin: 30px 0;
+            padding: 10px;
+            font-style: italic;
+            position: relative;
+        }
+
+        /* Línea azul bajo el texto especial */
+        .special-text::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background-color: #4A90E2;
+            margin: 10px auto 0;
+        }
+
+        /* Media queries para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .content-section {
+                flex-direction: column;
+                padding: 20px;
+                width: 95%;
+                text-align: center;
+            }
+
+            .content-section img {
+                width: 100%;
+                margin: 20px 0;
+            }
+
+            .content-grid {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .content-item {
+                width: 100%;
+            }
+
+            .header .overlay {
+                font-size: 1.8em;
+                padding: 0 20px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .navbar-links a {
+                margin: 5px 0;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<header class="navbar">
+    <div class="navbar-logo">
+       <img src="../imayes/cole.jpg" alt="Logo del colegio" class="logo-img">
+       <span>Colegio Marcelino Champagnat</span>
+    </div>
+    <nav class="navbar-links">
+       <a href="../index.html">Inicio</a>
+    </nav>
+</header>
+
+<!-- Header con video de fondo -->
+<section class="header">
+    <video autoplay muted loop>
+        <source src="../imayes/marcelino.mp4" type="video/mp4">
+    </video>
+    <div class="overlay">
+        Colegio Marcelino Champagnat
+    </div>
+</section>
+
+<!-- Sección de la biografía resumida -->
+<section class="content-section fade-in">
+    <div class="content-text">
+        <h2>Biografía de Marcelino Champagnat</h2>
+        <p>Marcelino Champagnat fue un sacerdote francés y fundador de la congregación de los Hermanos Maristas. Dedicó su vida a la educación y formación de los jóvenes, especialmente los más desfavorecidos. Inspirado en el amor y en los valores cristianos, su legado continúa impactando generaciones de estudiantes alrededor del mundo.</p>
+    </div>
+    <img src="../imayes/champagnat.jpg" alt="Marcelino Champagnat">
+</section>
+
+<!-- Sección de Misión -->
+<section class="content-section fade-in">
+    <img src="../imayes/trabajo.jpeg" alt="Misión del colegio">
+    <div class="content-text">
+        <h2>Misión</h2>
+        <p>Formar integralmente a los estudiantes, promoviendo los valores cristianos y el desarrollo personal, académico y social, para que sean agentes de cambio positivo en la sociedad.</p>
+    </div>
+</section>
+
+<!-- Sección de Visión -->
+<section class="content-section fade-in">
+    <div class="content-text">
+        <h2>Visión</h2>
+        <p>Ser un colegio de referencia en educación, reconocido por su excelencia académica y el compromiso con los valores maristas, formando líderes con un espíritu de servicio y solidaridad.</p>
+    </div>
+    <img src="../imayes/violeta.jpg"  alt="Visión del colegio">
+</section>
+
+<!-- Sección de tres bloques -->
+<div class="content-grid fade-in">
+    <div class="content-item">
+        <img src="../imayes/a1.jpg" alt="Compromiso con la comunidad">
+        <h3>Compromiso con la Comunidad</h3>
+        <p>El colegio mantiene una relación cercana con la comunidad, ofreciendo apoyo y participando activamente en el desarrollo social.</p>
+    </div>
+    <div class="content-item">
+        <img src="../imayes/a4.jpg" alt="Modernización de la infraestructura">
+        <h3>Modernización de Infraestructura</h3>
+        <p>Se han realizado importantes mejoras en nuestras instalaciones para brindar a los estudiantes un entorno óptimo de aprendizaje.</p>
+    </div>
+    <div class="content-item">
+        <img src="../imayes/compu2.jpg" alt="Excelencia Académica">
+        <h3>Excelencia Académica</h3>
+        <p>El colegio se enorgullece de ofrecer una educación de alta calidad que prepara a los estudiantes para un futuro exitoso.</p>
+    </div>
+</div>
+
+<!-- Texto especial con línea azul al final -->
+<div class="special-text">
+    "Hermanos, educad a los niños con amor y paciencia."
+</div>
+
+</body>
+</html>

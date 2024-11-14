@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champagnat Times - Revista Estudiantil</title>
+    <link rel="stylesheet" href="../csss/noticia.css">
+</head>
+<body>
+<!-- Header con botón de inicio -->
+<header class="navbar">
+    <div class="navbar-logo">
+        <img src="../imayes/cole.jpg" alt="Logo del colegio" class="logo-img">
+        <span>Marcelino Champagnat</span>
+    </div>
+    <nav class="navbar-links">
+        <a href="../index.html">Inicio</a>
+    </nav>
+</header>
+    <header class="header">
+       
+        <div class="title-section">
+            <h1>CHAMPAGNAT TIMES</h1>
+            <p>Revista Estudiantil</p>
+        </div>
+       
+    </header>
+
+    <main class="main-content">
+        <section class="news-block">
+            <h2>La Profe Madelen cumple un año mas de vida </h2>
+            <div class="news-content">
+                <img src="../imayes/madelen.jpg" alt="Directora" class="news-image">
+                <div class="news-text">
+                    <p><strong>CUMPLEAÑOS: </strong> La querida profe madelen cumple un año mas de vida  y asi es como se trato de recordar su cumpleaños , ya que es una gran docente  y tutora </p>
+                    <p class="news-author">promo 2024</p>
+                </div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="sidebar-item">
+                <p>El ultimo comunicado enviado por direccion </p>
+                <img src="../imayes/comuni2.jpg"  alt="Campamento" class="sidebar-image">
+            </div>
+            <div class="sidebar-item">
+                <p>Comunicados champagnat</p>
+                <img src="../imayes/comunicado.jpg"  alt="Construcción" class="sidebar-image">
+            </div>
+        </aside>
+    </main>
+    <style>
+        /* Estilos del encabezado */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-logo span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar-links a {
+            background-color: transparent;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: 2px solid #6A0DAD;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            background-color: #6A0DAD;
+            color: white;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar-logo {
+                margin-bottom: 10px;
+            }
+
+            .navbar-links a {
+                padding: 10px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <footer class="footer">
+        <div class="footer-block">
+            <p>Espíritu de Familia</p>
+            <p> nuestra unidad educativa se centra en valores maristas de las tres violetas, humildad sencillez y modestida</p>
+        </div>
+    </footer>
+
+</body>
+</html>

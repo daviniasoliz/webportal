@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Eventos Champagnat</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+   <style>
+      /* Estilos generales */
+      body {
+         background-color: #161013;
+         background-image: url("../imayes/topography.svg");
+         color: #fff;
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+         min-height: 100vh;
+         display: flex;
+         flex-direction: column;
+         align-items: center; /* Centrar contenido horizontalmente */
+         overflow-x: hidden;
+      }
+
+      h2 {
+         text-align: center;
+         margin-top: 40px;
+         font-size: 2rem;
+         color: #ff69b4;
+      }
+
+      /* Efecto al pasar el mouse sobre los bloques */
+      .tarjeta:hover {
+         border-color: #ff1493;
+         transform: scale(1.05);
+      }
+
+      /* Imagen en el bloque */
+      .tarjeta img {
+         width: 100%;
+         height: 200px;
+         object-fit: cover;
+         transition: transform 0.3s ease;
+         border-radius: 5px;
+      }
+
+      /* Efecto al pasar el mouse sobre la imagen */
+      .tarjeta:hover img {
+         transform: scale(1.1);
+      }
+
+      /* Texto del bloque */
+      .tarjeta h3 {
+         margin-top: 10px;
+         font-size: 1.2rem;
+         color: #fff;
+      }
+
+      .tarjeta span {
+         font-size: 0.9rem;
+         color: #ddd;
+      }
+
+      /* Estilos para la ventana emergente */
+      .modal {
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 250px;
+         padding: 20px;
+         background-color: #222;
+         border-radius: 8px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+         display: none;
+         flex-direction: column;
+         align-items: center;
+         z-index: 10;
+         max-height: 80vh;
+         overflow-y: auto;
+      }
+
+      .modal img {
+         width: 100%;
+         height: auto;
+         max-height: 300px;
+         border-radius: 5px;
+         margin-bottom: 15px;
+      }
+
+      .modal h3, .modal span {
+         color: #fff;
+      }
+
+      /* Fondo desenfocado cuando el modal está activo */
+      .blur-background {
+         filter: blur(8px);
+      }
+
+      /* Botón para cerrar el modal */
+      .close-btn {
+         background-color: #ff69b4;
+         color: #fff;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         margin-top: 15px;
+         font-size: 1rem;
+         transition: background-color 0.3s ease;
+      }
+
+      .close-btn:hover {
+         background-color: #ff1493;
+      }
+
+      .educacion-container {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 40px;
+         padding: 20px;
+         width: 100%;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding-bottom: 80px;
+         justify-items: center; /* Centrar items en la cuadrícula */
+      }
+
+      /* Estilos para los bloques individuales */
+      .tarjeta {
+         width: 100%;
+         max-width: 250px;
+         padding: 10px;
+         border: 3px solid #ff69b4;
+         border-radius: 8px;
+         text-align: center;
+         transition: border-color 0.3s ease, transform 0.3s ease;
+         overflow: hidden;
+         cursor: pointer;
+      }
+
+      /* Media queries para pantallas medianas (tablets) */
+      @media (max-width: 900px) {
+         .educacion-container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+         
+      
+         }
+      }
+
+      /* Media queries para pantallas pequeñas (móviles) */
+      @media (max-width: 600px) {
+         .educacion-container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+         }
+
+         h2 {
+            font-size: 1.5rem;
+         }
+         @media (max-width: 768px) {
+         .navbar {
+            flex-direction: column;
+            text-align: center;
+         }
+
+         .navbar-logo {
+            margin-bottom: 10px;
+         }
+
+         .navbar-links a {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+         }
+      }
+   
+      }
+
+      /* Estilos del encabezado */
+      .navbar {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         background-color: #333;
+         padding: 10px 20px;
+         color: white;
+         width: 100%;
+         box-sizing: border-box;
+      }
+
+      .navbar-logo {
+         display: flex;
+         align-items: center;
+      }
+
+      .logo-img {
+         width: 40px;
+         height: 40px;
+         margin-right: 10px;
+      }
+
+      
+      .navbar-logo span {
+         font-size: 20px;
+         font-weight: bold;
+         color: #fff;
+      }
+
+      .navbar-links a {
+         background-color: transparent;
+         color: #fff;
+         text-decoration: none;
+         font-size: 16px;
+         padding: 10px 20px;
+         border: 2px solid #6A0DAD;
+         border-radius: 5px;
+         transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .navbar-links a:hover {
+         background-color: #6A0DAD;
+         color: white;
+      }
+
+      /* Responsividad del navbar */
+      @media (max-width: 768px) {
+         .navbar {
+            flex-direction: column;
+            text-align: center;
+         }
+
+         .navbar-logo {
+            margin-bottom: 10px;
+         }
+
+         .navbar-links a {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+         }
+      }
+   </style>
+</head>
+<body>
+   <!-- Header con botón de inicio -->
+   <header class="navbar">
+       <div class="navbar-logo">
+           <img src="../imayes/cole.jpg" alt="Logo del colegio" class="logo-img">
+           <span>Marcelino Champagnat</span>
+       </div>
+       <nav class="navbar-links">
+           <a href="../index.html">Inicio</a>
+       </nav>
+   </header>
+
+   <h2>EVENTOS CHAMPAGNAT</h2>
+   <section class="educacion-container">
+      <div class="tarjeta" onclick="openModal('drama biblico realzado por la promoción', '2024', '../imayes/sanson.jpg')">
+         <img src="../imayes/drama.jpg" alt="Danzarte">
+         <h3>Drama Biblico</h3>
+         <span>2024</span>
+      </div>
+
+      <div class="tarjeta" onclick="openModal('Día del Padre', '2024', '../imayes/e2.jpg')">
+         <img src="../imayes/e2.jpg" alt="Día del Padre">
+         <h3>Día del Padre</h3>
+         <span>2024</span>
+      </div>
+
+      <div class="tarjeta" onclick="openModal('Día del Niño', '2024', '../imayes/e3.jpg')">
+         <img src="../imayes/e3.jpg" alt="Día del Niño">
+         <h3>Día del Niño</h3>
+         <span>2024</span>
+      </div>
+
+      <div class="tarjeta" onclick="openModal('Bodas de Plata', '2024', '../imayes/e4.jpg')">
+         <img src="../imayes/e4.jpg" alt="Bodas de Plata">
+         <h3>Bodas de Plata</h3>
+         <span>2024</span>
+      </div>
+
+      <div class="tarjeta" onclick="openModal('Campamento Trabajo', 'Promo 2024', '../imayes/e5.jpg')">
+         <img src="../imayes/e5.jpg" alt="Campamento Trabajo">
+         <h3>Campamento Trabajo</h3>
+         <span>Promo 2024</span>
+      </div>
+
+      <div class="tarjeta" onclick="openModal('Día de la Madre', '2024', '../imayes/e6.jpg')">
+         <img src="../imayes/e6.jpg" alt="Día de la Madre">
+         <h3>Día de la Madre</h3>
+         <span>2024</span>
+      </div>
+   </section>
+
+   <!-- Modal para mostrar los detalles -->
+   <div class="modal" id="modal">
+      <img src="" alt="Evento" id="modal-img">
+      <h3 id="modal-title"></h3>
+      <span id="modal-year"></span>
+      <button class="close-btn" onclick="closeModal()">Cerrar</button>
+   </div>
+
+   <script>
+      function openModal(title, year, imgSrc) {
+         document.getElementById('modal-title').textContent = title;
+         document.getElementById('modal-year').textContent = year;
+         document.getElementById('modal-img').src = imgSrc;
+         
+         document.getElementById('modal').style.display = 'flex';
+         document.querySelector('.educacion-container').classList.add('blur-background');
+      }
+
+      function closeModal() {
+         document.getElementById('modal').style.display = 'none';
+         document.querySelector('.educacion-container').classList.remove('blur-background');
+      }
+   </script>
+</body>
+</html>
